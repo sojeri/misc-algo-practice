@@ -1,9 +1,11 @@
 /**
  * https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/
  * needed to add a test case to force sliding window vs checking distinct separate cycles
- * new test case: bbaaaabb, returns 2 if only checking sep cycles, returns 4 if checking correctly
+ * new test case: s=bbaaaabb k=4, returns 2 if only checking sep cycles, returns 4 if checking correctly
+ * new test case: s=bbaaa k=3 to confirm not skipping last char check
  * algo runtime is O(n) because we have to check every character once
  *   space complexity is O(1)
+ * tests passed in ~60ms
  * @param {string} s
  * @param {number} k
  * @return {number}
