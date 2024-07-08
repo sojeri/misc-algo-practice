@@ -1,5 +1,6 @@
 /**
  * https://leetcode.com/problems/minimum-size-subarray-sum/
+ * runtime O(n^2), space O(1)
  * test cases added:
  * 74 [1,1,1,(.... 73 total 1s)]
  * 74 [2,3,1,2,4,3,20,80,1,2,5,5,5,5,1,33,44,42]
@@ -12,14 +13,13 @@ var minSubArrayLen = function(target, nums) {
     for (let i=0; i<nums.length; i++) {
         let sum = nums[i];
         if (sum >= target && 1 < size) {
-                size = 1;
-                isMatch = true;
-                continue;
+            return 1;
         }
         for (let j=i+1; j<nums.length; j++) {
             sum += nums[j];
             if (sum >= target && j - i < size) {
                 size = j - i + 1;
+                if (size === 1) return 1;
                 isMatch = true;
                 continue;
             }
