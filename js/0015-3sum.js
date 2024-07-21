@@ -77,7 +77,7 @@ function threeSumFaster(nums) {
                 // some kinda sus logic here just to get around js num->str slowness
                 // initial thought was just to match.join(","), but it timed out large inputs
                 // can't use native JS Set, either, because it uses strict equal === which
-                // only checks instrintic object sameness, doesn't check deep equal values.
+                // only checks instrinsic object sameness, doesn't check deep equal values.
                 // ie, any two arrays, whether same values or not, would never be considered
                 // same unless they are the same exact instance of array. and you can't reuse
                 // the array getting pushed in, because the pointer to the array is pushed in
