@@ -76,6 +76,13 @@ function threeSumFaster(nums) {
                 const match = [first, second, needThird].sort();
                 // some kinda sus logic here just to get around js num->str slowness
                 // initial thought was just to match.join(","), but it timed out large inputs
+                // can't use native JS Set, either, because it uses strict equal === which
+                // only checks instrintic object sameness, doesn't check deep equal values.
+                // ie, any two arrays, whether same values or not, would never be considered
+                // same unless they are the same exact instance of array. and you can't reuse
+                // the array getting pushed in, because the pointer to the array is pushed in
+                // future updates to the array would alter the one in the Set.
+                // and thus---- matchKey sus math to track seen on an object
                 const matchKey = match[0] + (match[1] * 1_000) + (match[2] * 100_000);
                 if (!seen[matchKey]) {
                     seen[matchKey] = true;
@@ -111,8 +118,6 @@ function threeSumSorted(unsortedNums) {
             } else if (sum < 0) {
                 low++;
             } else { // sum === 0
-                // some kinda sus logic here just to get around js num->str slowness
-                // initial thought was just to match.join(","), but it timed out large inputs
                 const matchKey = first + (second * 1_000) + (third * 100_000);
                 if (!seen[matchKey]) {
                     seen[matchKey] = true;
